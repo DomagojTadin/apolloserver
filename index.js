@@ -35,8 +35,6 @@ const server = new ApolloServer({
   resolvers
 });
 
-//const server = express();
-
 server.listen().then(({ url }) => {
   console.log(`Go to ${url} to run queries!`);
 });
