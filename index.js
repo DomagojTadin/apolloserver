@@ -1,8 +1,7 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
-const { makeExecutableSchema } = require("graphql-tools");
-const { gql } = require("apollo-server-express");
+//const express = require("express");
+//const bodyParser = require("body-parser");
+const { ApolloServer, gql } = require("apollo-server");
+//const { makeExecutableSchema } = require("graphql-tools");
 
 const books = [
   {
@@ -24,3 +23,20 @@ const typeDefs = gql`
     author: String
   }
 `;
+
+const resolvers = {
+  Query: {
+    books: () => books
+  }
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
+
+//const server = express();
+
+server.listen().then(({ url }) => {
+  console.log(`Go to ${url} to run queries!`);
+});
