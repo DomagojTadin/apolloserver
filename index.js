@@ -14,19 +14,36 @@ const books = [
   }
 ];
 
+const libraries = [
+  {
+    name: "Ashburn public library",
+    address: "somewhere in ashburn"
+  },
+  {
+    name: "brambleton public library",
+    address: "somewhere in brambleton"
+  }
+];
+
 const typeDefs = gql`
   type Query {
     books: [Book]
+    libraries: [Library]
   }
   type Book {
     title: String
     author: String
   }
+  type Library {
+    name: String
+    address: String
+  }
 `;
 
 const resolvers = {
   Query: {
-    books: () => books
+    books: () => books,
+    libraries: () => libraries
   }
 };
 
