@@ -17,11 +17,13 @@ const books = [
 const libraries = [
   {
     name: "Ashburn public library",
-    address: "somewhere in ashburn"
+    address: "somewhere in ashburn",
+    inventory: () => books[0].title
   },
   {
     name: "brambleton public library",
-    address: "somewhere in brambleton"
+    address: "somewhere in brambleton",
+    inventory: () => books[1].title
   }
 ];
 
@@ -37,6 +39,7 @@ const typeDefs = gql`
   type Library {
     name: String
     address: String
+    inventory: String
   }
 `;
 
